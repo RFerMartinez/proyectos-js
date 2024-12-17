@@ -8,7 +8,31 @@
 </head>
 <body>
 
-    
+    <div id="app">
+
+        <!--Tiempo y nombre de la tarea 'in progress'-->
+        <div id="tiempo">
+            <div id="valor"></div>
+            <div id="nombreTarea"></div>
+        </div>
+
+        <!--Contenedor del formulario de las tareas, y las tareas pendientes-->
+        <div class="contenedor-tareas">
+
+            <!--Formulario para ingresar nueva tarea-->
+            <div class="formulario">
+                <input type="text" id="idTarea">
+                <input type="submit" value="Agregar Tarea" id="btnAdd">
+            </div>
+
+            <!--Lista de las tareas pendientes-->
+            <div id="tareas">
+                <!--Las tareas se irán agregando mediante JS-->
+            </div>
+
+        </div>
+        
+    </div>
 
     <script src="script.js"></script>
 </body>
