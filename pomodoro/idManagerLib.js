@@ -1,19 +1,4 @@
-// export class idManager {
-//     //FUNCION PARA OBTENER UN NUEVO ID
-//     getId = () => {
-//         if (IdsDisponibles.length > 0) {    //verifica si hay un id disponible
-//             return IdsDisponibles.pop();    //quita de la lista el id disponible y lo utiliza
-//         } else {
-//             return contadorIds++;           //genera un id nuevo creciente
-//         };
-//     };
-//     //FUNCION PARA ELIMINAR UN ID
-//     popId = (id) => {
-//         if (id <= contadorIds && !IdsDisponibles.includes(id)) {    //verifica que sea factible eliminar
-//             IdsDisponibles.push(id);                                //agrega a la lista de id disponibles
-//         };
-//     };
-// };
+
 
 //MANEJADOR DE IDs
 export class IdManager {
