@@ -72,6 +72,7 @@ const keys = [
 
 let mayus = false;
 let shift = false;
+let current = null;
 
 renderKeyboard();
 
@@ -84,12 +85,12 @@ function renderKeyboard() {
             //TELCAS ESPECIALES
             if (key[0] == 'SHIFT') {
                 return `
-                    <button class="key key-shift">${key[0]}</button>
+                    <button class="key key-shift ${shift ? 'activated' : ''}">${key[0]}</button>
                 `;
             }
             if (key[0] == 'MAYUS') {
                 return `
-                    <button class="key key-mayus">${key[0]}</button>
+                    <button class="key key-mayus ${mayus ? 'activated' : ''}">${key[0]}</button>
                 `;
             }
             if (key[0] == 'SPACE') {
@@ -118,5 +119,33 @@ function renderKeyboard() {
 
     htmlLayers.forEach( layer => {
         keyboardContainer.innerHTML += `<div class="layer">${layer}</div>`;
-    })
+    });
+
+    //DANDOLE FUNCOINALIDAD A LAS TECLAS
+    document.querySelectorAll('.key').forEach( key => {
+        key.addEventListener('click', e => {
+            if (current) {
+                if (key.textContent == 'SHIFT') {
+                    shift = !shift;
+                } else if (key.textContent == 'MAYUS') {
+                    mayus = !mayus;
+                } else if (key.textContent == 'SPACE') {
+                    current.value += " ";
+                } else {
+                    current.value += key.textContent.trim();
+                    if (shift) {
+                        shift = false;
+                    }
+                }
+                renderKeyboard();
+                current.focus();
+            }
+        });
+    });
 }
+
+document.querySelectorAll('input').forEach( input => {
+    input.addEventListener('focusin', e => {
+        current = e.target;//devuelve la etiqueta HTML del input
+    });
+});
